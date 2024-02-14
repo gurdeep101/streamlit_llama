@@ -5,10 +5,19 @@ from llama_index.llms import OpenAI
 import openai
 from llama_index import SimpleDirectoryReader
 
-# initialize message history
-openai.api_key = st.secrets.openai_key
+# set page parameters
+st.set_page_config(
+    page_title="Chat with Streamlit docs",
+    page_icon=":books:",
+    layout="left",
+    initial_sidebar_state="collapsed",
+    menu_items=None,
+    )
+st.info("Copied from streamlit blog")
 st.header("Chat with Streamlit docs")
 
+# initialize message history
+openai.api_key = st.secrets.openai_key
 if "messages" not in st.session_state.keys():
     st.session_state["messages"] = [
         {"role": "system", "content": "Ask me a question about streamlit."}
